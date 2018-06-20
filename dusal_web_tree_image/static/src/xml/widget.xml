@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="dusal_tree_image" xml:space="preserve">
+    <t t-name="ListView.row.imagen">
+        <img t-att-height="widget.height || 32" t-att-src="src" class="oe_image_tree"/>
+    </t>
+</templates>
