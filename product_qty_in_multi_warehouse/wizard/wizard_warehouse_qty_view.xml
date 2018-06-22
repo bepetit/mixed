@@ -1,0 +1,36 @@
+<odoo>
+    <record id="wizard_product_qty_form" model="ir.ui.view">
+        <field name="name">wizard.product.qty.form</field>
+        <field name="model">product.quantity</field>
+        <field name="arch" type="xml">
+            <form string="Warehouse Product" version="7.0">
+                <group colspan="2">
+                    <field name="product_id"/>
+                </group>
+                <notebook>
+                    <page string="Locations">
+                        <group colspan="4">
+                            <field name="lines" nolabel="1" readonly="True">
+                                <tree string="Warehouse Product Quantities" editable="bottom">
+                                    <field name="location"/>
+                                    <field name="avail_qty"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+                <footer>
+                    <button string="Cancel" class="oe_highlight" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_product_qty" model="ir.actions.act_window">
+        <field name="name">Product Quantity</field>
+        <field name="res_model">product.quantity</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
