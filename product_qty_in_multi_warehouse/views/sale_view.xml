@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_order_form_inherits" model="ir.ui.view">
+        <field name="name">sale.order.form.inherits</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page/field/tree" position="inside">
+                <button string="View Stock" name="%(action_wizard_product_qty)d"
+                        icon="fa-list" type="action"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
