@@ -42,3 +42,8 @@
 	path = OCA/banking
 	url = git@github.com:OCA/banking.git
 	branch = 10.0
+
+[submodule "OCA/edi"]
+	path = OCA/edi
+	url = git@github.com:OCA/edi.git
+	branch = 10.0
