@@ -1,0 +1,87 @@
+<odoo>
+    <!-- Inherit Form View to add smart button 'Warehouse Quantity' -->
+
+    <record id="product_template_kanban_view_inherit_qty" model="ir.ui.view">
+        <field name="name">product.template.kanban.view.inherit.qty</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <ul position="inside">
+                <li t-if="record.type.raw_value != 'service'">
+                    <button class="oe_stat_button"
+                            name="%(action_wizard_product_qty)d" icon="Warehouse Qty"
+                            type="action" string="Qty">
+                    </button>
+                </li>
+            </ul>
+        </field>
+    </record>
+
+    <record id="view_product_template_form_inherits" model="ir.ui.view">
+        <field name="name">product.template.form.inherits</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button"
+                        name="%(action_wizard_product_qty)d" icon="fa-list"
+                        type="action" string="Warehouse Quantity">
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_product_template_tree_inherits" model="ir.ui.view">
+        <field name="name">product.template.tree.inherits</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_id']" position="after">
+                <button class="oe_stat_button"
+                        name="%(action_wizard_product_qty)d" icon="fa-list"
+                        type="action" string="Warehouse Quantity">
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_kanban_prod_qty_inherit">
+        <field name="name">product.kanban.prod.qty.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='tags']" position="inside">
+                <button class="oe_stat_button"
+                        name="%(action_wizard_product_qty)d" icon="Warehouse Qty"
+                        type="action" string="Warehouse Quantity">
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_product_tree_view_inherits" model="ir.ui.view">
+        <field name="name">product.product.tree.inherits</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="default_code" position="before">
+                <button string="View Stock" name="%(action_wizard_product_qty)d"
+                        icon="fa-list" type="action"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_product_form_inherits" model="ir.ui.view">
+        <field name="name">product.form.inherits</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button"
+                        name="%(action_wizard_product_qty)d" icon="fa-list"
+                        type="action" string="Warehouse Quantity">
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>
