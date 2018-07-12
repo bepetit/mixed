@@ -37,3 +37,8 @@
 	path = OCA/community-data-files
 	url = git@github.com:OCA/community-data-files.git
 	branch = 10.0
+
+[submodule "OCA/banking"]
+	path = OCA/banking
+	url = git@github.com:OCA/banking.git
+	branch = 10.0
