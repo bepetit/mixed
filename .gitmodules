@@ -27,3 +27,8 @@
 	path = OCA/account-financial-reporting
 	url = git@github.com:OCA/account-financial-reporting.git
 	branch = 10.0
+
+[submodule "OCA/intrastat"]
+	path = OCA/intrastat
+	url = git@github.com:OCA/intrastat.git
+	branch = 10.0
