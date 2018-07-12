@@ -32,3 +32,8 @@
 	path = OCA/intrastat
 	url = git@github.com:OCA/intrastat.git
 	branch = 10.0
+
+[submodule "OCA/community-data-files"]
+	path = OCA/community-data-files
+	url = git@github.com:OCA/community-data-files.git
+	branch = 10.0
