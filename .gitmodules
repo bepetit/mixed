@@ -47,3 +47,8 @@
 	path = OCA/edi
 	url = git@github.com:OCA/edi.git
 	branch = 10.0
+
+[submodule "JayVora-SerpentCS/SerpentCS_Contributions"]
+	path = JayVora-SerpentCS/SerpentCS_Contributions
+	url = git@github.com:JayVora-SerpentCS/SerpentCS_Contributions.git
+	branch = 10.0
