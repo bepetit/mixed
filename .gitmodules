@@ -1,0 +1,64 @@
+[submodule "OCA/partner-contact"]
+	path = OCA/partner-contact
+	url = git@github.com:OCA/partner-contact.git
+	branch = 10.0
+
+[submodule "OCA/purchase-workflow"]
+	path = OCA/purchase-workflow
+	url = git@github.com:OCA/purchase-workflow.git
+	branch = 10.0
+
+[submodule "OCA/stock-logistics-warehouse"]
+	path = OCA/stock-logistics-warehouse
+	url = git@github.com:OCA/stock-logistics-warehouse.git
+	branch = 10.0
+
+[submodule "OCA/account-financial-tools"]
+	path = OCA/account-financial-tools
+	url = git@github.com:OCA/account-financial-tools.git
+	branch = 10.0
+
+[submodule "OCA/l10n-netherlands"]
+	path = OCA/l10n-netherlands
+	url = git@github.com:OCA/l10n-netherlands.git
+	branch = 10.0
+
+[submodule "OCA/account-financial-reporting"]
+	path = OCA/account-financial-reporting
+	url = git@github.com:OCA/account-financial-reporting.git
+	branch = 10.0
+
+[submodule "OCA/intrastat"]
+	path = OCA/intrastat
+	url = git@github.com:OCA/intrastat.git
+	branch = 10.0
+
+[submodule "OCA/community-data-files"]
+	path = OCA/community-data-files
+	url = git@github.com:OCA/community-data-files.git
+	branch = 10.0
+
+[submodule "OCA/banking"]
+	path = OCA/banking
+	url = git@github.com:OCA/banking.git
+	branch = 10.0
+
+[submodule "OCA/edi"]
+	path = OCA/edi
+	url = git@github.com:OCA/edi.git
+	branch = 10.0
+
+[submodule "JayVora-SerpentCS/SerpentCS_Contributions"]
+	path = JayVora-SerpentCS/SerpentCS_Contributions
+	url = git@github.com:JayVora-SerpentCS/SerpentCS_Contributions.git
+	branch = 10.0
+
+[submodule "OCA/stock-logistics-workflow"]
+	path = OCA/stock-logistics-workflow
+	url = git@github.com:OCA/stock-logistics-workflow.git
+	branch = 10.0
+
+[submodule "OCA/sale-workflow"]
+	path = OCA/sale-workflow
+	url = git@github.com:OCA/sale-workflow.git
+	branch = 10.0
