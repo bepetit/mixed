@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="picking">
+        <Messages>
+            <Message>
+                <MessageStandard>TRANSUSXML</MessageStandard>
+                <MessageType>6</MessageType>
+
+                <IsTestMessage><t t-esc="self.transus_test_mode and 'Y' or 'N'" /></IsTestMessage>
+                <BuyerGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></BuyerGLN>
+                <SupplierGLN><t t-esc="self.company_id.transus_gln" /></SupplierGLN>
+                <!--<MessageReference>181018094906895</MessageReference>-->
+                <DespatchAdviceNumber><t t-esc="self.id" /></DespatchAdviceNumber>
+                <!--<DespatchAdviceDate><t t-esc="self.get_transus_despatch_date()" /></DespatchAdviceDate>-->
+                <DespatchDate><t t-esc="self.get_transus_despatch_date()" /></DespatchDate>
+                <OrderNumberBuyer><t t-esc="self.client_order_ref" /></OrderNumberBuyer>
+                <!--<OrderNumberSupplier>Ordernummer leverancier</OrderNumberSupplier>-->
+                <!--<ConsumerReference>Consumentenreferentie</ConsumerReference>-->
+                <DeliveryPartyGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></DeliveryPartyGLN>
+                <UltimateConsigneeGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></UltimateConsigneeGLN>
+                <!--<IsBackhauling>N</IsBackhauling>-->
+
+                <t t-foreach="self.pack_operation_ids" t-as="line">
+                    <t t-if="line.qty_done">
+                        <Article>
+                            <GTIN><t t-esc="line.product_id.barcode" /></GTIN>
+                            <!--<LineNumber><t t-esc="line.id" /></LineNumber> -->
+                            <DeliveredQuantity><t t-esc="line.qty_done" /></DeliveredQuantity>
+                            <OrderNumberSupplier><t t-esc="line.picking_id.origin" /></OrderNumberSupplier>
+                        </Article>
+                    </t>
+                </t>
+            </Message>
+        </Messages>
+    </template>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="order">
+        <Messages>
+            <Message>
+                <MessageStandard>TRANSUSXML</MessageStandard>
+                <MessageType>3</MessageType>
+
+                <IsTestMessage><t t-esc="self.transus_test_mode and 'Y' or 'N'" /></IsTestMessage>
+                <OrderNumberBuyer><t t-esc="self.name" /></OrderNumberBuyer>
+                <OrderDate><t t-esc="self.get_transus_order_date()" /></OrderDate><!-- # TODO to confirmation_date ?-->
+                <RequestedDeliveryDate><t t-esc="self.get_transus_delivery_date()" /></RequestedDeliveryDate><!-- # TODO to commitment_date ?-->
+                <BuyerGLN><t t-esc="self.company_id.transus_gln" /></BuyerGLN>
+                <SupplierGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></SupplierGLN>
+                <DeliveryPartyGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></DeliveryPartyGLN>
+                <CurrencyCode><t t-esc="self.currency_id.name" /></CurrencyCode>
+
+                <t t-foreach="self.order_line" t-as="line">
+                    <Article>
+                        <LineNumber><t t-esc="line.sequence" /></LineNumber>
+                        <GTIN><t t-esc="line.product_id.barcode" /></GTIN>
+                        <OrderedQuantity><t t-esc="line.product_qty" /></OrderedQuantity>
+                    </Article>
+                </t>
+            </Message>
+        </Messages>
+    </template>
+</odoo>

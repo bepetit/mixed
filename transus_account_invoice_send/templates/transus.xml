@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="invoice">
+        <Messages>
+            <Message>
+                <MessageStandard>TRANSUSXML</MessageStandard>
+                <MessageType>8</MessageType>
+
+                <IsTestMessage><t t-esc="self.transus_test_mode and 'Y' or 'N'" /></IsTestMessage>
+                <InvoiceNumber><t t-esc="self.number" /></InvoiceNumber>
+                <InvoiceType><t t-esc="self.get_transus_invoice_type()" /></InvoiceType>
+                <InvoiceDate><t t-esc="self.get_transus_invoice_date()" /></InvoiceDate>
+                <CurrencyCode><t t-esc="self.currency_id.name" /></CurrencyCode>
+                <BuyerGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></BuyerGLN>
+                <InvoiceeGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></InvoiceeGLN>
+                <SupplierGLN><t t-esc="self.company_id.transus_gln" /></SupplierGLN>
+                <OrderNumberBuyer><t t-esc="self.name" /></OrderNumberBuyer>
+                <!--<Supplier><t t-esc="self.company_id.name" /></Supplier>-->
+
+                <t t-foreach="self.invoice_line_ids" t-as="line">
+                    <Article>
+                        <!--<LineNumber><t t-esc="line.sequence" /></LineNumber>-->
+                        <GTIN><t t-esc="line.product_id.barcode" /></GTIN>
+                        <!--<ArticleCodeSupplier><t t-esc="line.product_id.default_code" /></ArticleCodeSupplier>-->
+                        <!--<ArticleDescription><t t-esc="line.name" /></ArticleDescription>-->
+                        <InvoicedQuantity><t t-esc="line.quantity" /></InvoicedQuantity>
+                        <!--<NetLineAmount><t t-esc="line.price_subtotal" /></NetLineAmount>-->
+                        <ArticleNetPrice><t t-esc="line.price_unit" /></ArticleNetPrice>
+                        <!--<VATBaseAmount><t t-esc="line.price_subtotal" /></VATBaseAmount>-->
+                        <VATPercentage><t t-esc="line.get_transus_invoice_line_vat_percentage()" /></VATPercentage>
+
+                        <!--# TODO add discount?-->
+                    </Article>
+                </t>
+
+                <!--<InvoiceTotals>-->
+                    <!--<VATAmount><t t-esc="self.amount_tax" /></VATAmount>-->
+                    <!--<InvoiceAmount><t t-esc="self.amount_total" /></InvoiceAmount>-->
+                    <!--<NetLineAmount><t t-esc="self.amount_untaxed" /></NetLineAmount>-->
+                <!--</InvoiceTotals>-->
+
+                <!--<t t-foreach="self.tax_line_ids" t-as="tax_line">-->
+                    <!--<InvoiceVATTotals>-->
+                        <!--<VATPercentage><t t-esc="tax_line.tax_id.amount" /></VATPercentage>-->
+                        <!--<VATAmount><t t-esc="tax_line.amount" /></VATAmount>-->
+                        <!--<VATBaseAmount><t t-esc="tax_line.base" /></VATBaseAmount>-->
+                    <!--</InvoiceVATTotals>-->
+                <!--</t>-->
+            </Message>
+        </Messages>
+    </template>
+</odoo>
