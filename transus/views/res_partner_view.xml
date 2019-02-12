@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2018 Onestein (<http://www.onestein.eu>)
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook">
+                <page string="Transus">
+                    <group>
+                        <group>
+                            <field name="transus_gln" />
+                        </group>
+                        <group>
+                        </group>
+                        <group name="transus_customer" string="Customer">
+                        </group>
+                        <group name="transus_supplier" string="Supplier">
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

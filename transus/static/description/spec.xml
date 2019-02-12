@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Messages>
+    <Message>
+        <MessageStandard>TRANSUSXML</MessageStandard>
+        <MessageType>8</MessageType>
+        <IsTestMessage>Y</IsTestMessage>
+        <InvoiceNumber>Invoice number</InvoiceNumber>
+        <InvoiceType>PRO</InvoiceType>
+        <InvoiceDate>20181129</InvoiceDate>
+        <OrderNumberBuyer>Order number buyer</OrderNumberBuyer>
+        <OrderDate>20181129</OrderDate>
+        <DespatchAdviceNumber>Despatch advice number</DespatchAdviceNumber>
+        <DespatchAdviceDate>20181129</DespatchAdviceDate>
+        <CurrencyCode>EUR</CurrencyCode>
+        <DeliveryPartyGLN>Delivery party GLN</DeliveryPartyGLN>
+        <DeliveryParty>Delivery party</DeliveryParty>
+        <InvoiceeGLN>Invoicee GLN</InvoiceeGLN>
+        <BuyerGLN>Buyer GLN</BuyerGLN>
+        <BuyerVATNumber>Buyer VAT number</BuyerVATNumber>
+        <Buyer>Buyer</Buyer>
+        <BuyerAddress>Buyer address</BuyerAddress>
+        <BuyerCity>Buyer city</BuyerCity>
+        <BuyerZipcode>Buyer zipcode</BuyerZipcode>
+        <BuyerCountry>Buyer country</BuyerCountry>
+        <SupplierGLN>8718026370008</SupplierGLN>
+        <SupplierVATNumber>NL806491188B01</SupplierVATNumber>
+        <Supplier>Vitility International B.V.</Supplier>
+        <SupplierAddress>Hercules 22</SupplierAddress>
+        <SupplierCity>Gilze</SupplierCity>
+        <SupplierZipcode>5126 RK</SupplierZipcode>
+        <SupplierCountry>NL</SupplierCountry>
+        <Invoicee>Invoicee</Invoicee>
+        <InvoiceeAddress>Invoicee address</InvoiceeAddress>
+        <InvoiceeCity>Invoicee city</InvoiceeCity>
+        <InvoiceeZipcode>Invoicee zipcode</InvoiceeZipcode>
+        <InvoiceeCountry>Invoicee country</InvoiceeCountry>
+        <UnspecifiedText>Unspecified text</UnspecifiedText>
+        <UnspecifiedTextCode>Unspecified text code</UnspecifiedTextCode>
+        <IsDutyFree>N</IsDutyFree>
+        <ReclamationNumber>Reclamation number</ReclamationNumber>
+        <ReceiptNotificationNumber>Receipt notification number</ReceiptNotificationNumber>
+        <PaymentDiscountDays>Payment discount days</PaymentDiscountDays>
+        <PaymentDiscountAmount>Payment discount amount</PaymentDiscountAmount>
+        <PaymentDiscountPercentage>Payment discount percentage</PaymentDiscountPercentage>
+        <SupplierCompanyRegistrationNumber>Supplier company registration nr</SupplierCompanyRegistrationNumber>
+        <SupplierBankAccount>Supplier bank account</SupplierBankAccount>
+        <SupplierIBAN>Supplier IBAN</SupplierIBAN>
+        <SupplierBIC>Supplier BIC</SupplierBIC>
+        <SalesFromDate>20181129</SalesFromDate>
+        <SalesToDate>20181129</SalesToDate>
+        <InvoiceDiscount>
+            <LineNumber>Line number</LineNumber>
+            <DiscountCode>Discount code</DiscountCode>
+            <DiscountAmount>Discount amount</DiscountAmount>
+            <DiscountPercentage>Discount percentage</DiscountPercentage>
+            <IsDutyFree>N</IsDutyFree>
+            <UnspecifiedText>Unspecified text</UnspecifiedText>
+        </InvoiceDiscount>
+        <InvoiceCharge>
+            <LineNumber>Line number</LineNumber>
+            <ChargeAmount>Charge amount</ChargeAmount>
+            <ChargeCode>Charge code</ChargeCode>
+            <ChargePercentage>Charge percentage</ChargePercentage>
+            <UnspecifiedText>Unspecified text</UnspecifiedText>
+            <IsDutyFree>N</IsDutyFree>
+        </InvoiceCharge>
+        <Article>
+            <LineNumber>Line number</LineNumber>
+            <GTIN>GTIN</GTIN>
+            <ArticleDescription>Article description</ArticleDescription>
+            <ArticleCodeSupplier>Article code supplier</ArticleCodeSupplier>
+            <ArticleNetPrice>Article net price</ArticleNetPrice>
+            <ArticleNetPriceUnitCode>TY</ArticleNetPriceUnitCode>
+            <ArticleQuantityPerPriceUnit>Quantity per price unit</ArticleQuantityPerPriceUnit>
+            <DeliveredQuantity>Delivered quantity</DeliveredQuantity>
+            <InvoicedQuantity>Invoiced quantity</InvoicedQuantity>
+            <OrderNumberBuyer>Order number buyer</OrderNumberBuyer>
+            <OrderDate>20181129</OrderDate>
+            <OrderNumberSupplier>Order number supplier</OrderNumberSupplier>
+            <OrderLineReference>Order line reference</OrderLineReference>
+            <DespatchAdviceLineReference>Despatch advice line reference</DespatchAdviceLineReference>
+            <PromotionVariantCode>Promotion variant code</PromotionVariantCode>
+            <VATPercentage>VAT percentage</VATPercentage>
+            <IsDutyFree>N</IsDutyFree>
+            <NetLineAmount>Net line amount</NetLineAmount>
+            <VATBaseAmount>VAT base amount</VATBaseAmount>
+            <PackagingType>Packaging type</PackagingType>
+            <PackingSlipNumber>Packing slip number</PackingSlipNumber>
+            <ArticleGrossPrice>Article gross price</ArticleGrossPrice>
+            <VATAmount>VAT amount</VATAmount>
+            <ArticleCharge>
+                <VATPercentage>VAT percentage</VATPercentage>
+                <IsDutyFree>N</IsDutyFree>
+                <ChargeAmount>Charge amount</ChargeAmount>
+                <ChargePercentage>Charge percentage</ChargePercentage>
+                <UnspecifiedText>Unspecified text</UnspecifiedText>
+                <ChargeCode>Charge code</ChargeCode>
+            </ArticleCharge>
+            <ArticleDiscount>
+                <DiscountPercentage>Discount percentage</DiscountPercentage>
+                <DiscountAmount>Discount amount</DiscountAmount>
+                <DiscountCode>Discount code</DiscountCode>
+                <IsDutyFree>N</IsDutyFree>
+                <VATPercentage>VAT percentage</VATPercentage>
+                <UnspecifiedText>Unspecified text</UnspecifiedText>
+            </ArticleDiscount>
+        </Article>
+        <InvoiceTotals>
+            <VATAmount>VAT amount</VATAmount>
+            <InvoiceAmount>Invoice amount</InvoiceAmount>
+            <NetLineAmount>Net line amount</NetLineAmount>
+            <ChargeAmount>Charge amount</ChargeAmount>
+            <DiscountAmount>Discount amount</DiscountAmount>
+        </InvoiceTotals>
+        <InvoiceVATTotals>
+            <VATPercentage>VAT percentage</VATPercentage>
+            <VATAmount>VAT amount</VATAmount>
+            <VATBaseAmount>VAT base amount</VATBaseAmount>
+            <IsDutyFree>N</IsDutyFree>
+        </InvoiceVATTotals>
+    </Message>
+</Messages>

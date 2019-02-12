@@ -1,0 +1,32 @@
+
+
+MIX customer - Vit vendor
+On the vendor create list of checkboxes to enable A, B, C
+On the customer create list of checkboxes to enable A, B, C
+
+
+MIX
+- A [transus_order_send]            PO sender          VIT vendor
+- B [transus_stock_picking_receive]    picking receiv     VIT vendor
+- C [transus_account_invoice_receive]  invoice receiv     VIT vendor
+
+VIT
+- A [transus_order_receive]             po-SO receiv       MIX customer
+- B [transus_stock_picking_send]       out Picking sender MIX customer
+- C [transus_account_invoice_send]     out invoice sender MIX customer
+
+
+
+A 1) [transus_order_send]           MIX create PO, when validated -> Transus
+A 2) [transus_order_receive]            VIT get a message from Transus, gets the PO but creates the SO
+
+B 3) [transus_stock_picking_send]      VIT creates out picking, when validated -> Transus
+B 4) [transus_stock_picking_receive]   MIX get a message from Transus, gets the out picking but creates the incoming picking
+
+C 5) [transus_account_invoice_send]    VIT creates out invoice, when validated -> Transus
+C 6) [transus_account_invoice_receive] MIX get a message from Transus, gets the out invoice but creates the in invoice
+
+
+
+
+

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <template id="message_3">
+<Messages>
+    <Message>
+        <MessageStandard>TRANSUSXML</MessageStandard>
+        <MessageType>3</MessageType>
+        <OrderNumberBuyer>Ordernummer afnemer</OrderNumberBuyer>
+        <IsTestMessage>Y</IsTestMessage>
+        <OrderDate>20180102</OrderDate>
+        <RequestedDeliveryDate>20180102</RequestedDeliveryDate>
+        <BuyerGLN>8713165000014</BuyerGLN>
+        <SupplierGLN>8713165000014</SupplierGLN>
+        <DeliveryPartyGLN>8713165000014</DeliveryPartyGLN>
+        <CurrencyCode>EUR</CurrencyCode>
+        <Article>
+            <LineNumber>Regelnummer</LineNumber>
+            <GTIN>GTIN</GTIN>
+            <OrderedQuantity>Besteld aantal</OrderedQuantity>
+        </Article>
+    </Message>
+</Messages>
+        </template>
+
+        <template id="message_6">
+<Messages>
+    <Message>
+        <MessageStandard>TRANSUSXML</MessageStandard>
+        <MessageType>6</MessageType>
+        <IsTestMessage>Y</IsTestMessage>
+        <MessageReference>181018094906895</MessageReference>
+        <DespatchAdviceNumber>Verzendberichtnummer</DespatchAdviceNumber>
+        <DespatchAdviceDate>20181018</DespatchAdviceDate>
+        <DespatchDate>20181018</DespatchDate>
+        <OrderNumberBuyer>Ordernummer afnemer</OrderNumberBuyer>
+        <OrderNumberSupplier>Ordernummer leverancier</OrderNumberSupplier>
+        <ConsumerReference>Consumentenreferentie</ConsumerReference>
+        <SupplierGLN>8713165000014</SupplierGLN>
+        <ManufacturerGLN>GLN fabrikant</ManufacturerGLN>
+        <BuyerGLN>8713165000014</BuyerGLN>
+        <DeliveryPartyGLN>8713165000014</DeliveryPartyGLN>
+        <IsBackhauling>N</IsBackhauling>
+        <UltimateConsigneeGLN>GLN eindbestemming</UltimateConsigneeGLN>
+        <DespatchUnit>
+            <ISOCode>ISO code</ISOCode>
+            <GTIN>GTIN</GTIN>
+            <DespatchUnitQuantity>Aantal verzendeenheden</DespatchUnitQuantity>
+            <SSCC>SSCC</SSCC>
+        </DespatchUnit>
+        <Article>
+            <GTIN>GTIN</GTIN>
+            <LineNumber>Regelnummer</LineNumber>
+            <DeliveredQuantity>Geleverd aantal</DeliveredQuantity>
+            <OrderNumberSupplier>Ordernummer leverancier</OrderNumberSupplier>
+        </Article>
+    </Message>
+</Messages>
+        </template>
+
+        <template id="message_8">
+<Messages>
+    <Message>
+        <MessageStandard>TRANSUSXML</MessageStandard>
+        <MessageType>8</MessageType>
+        <MessageDate>Berichtdatum</MessageDate>
+        <MessageReference>181018094929188</MessageReference>
+        <IsTestMessage>Y</IsTestMessage>
+        <InvoiceType>PRO</InvoiceType>
+        <InvoiceNumber>Factuurnummer</InvoiceNumber>
+        <OrderNumberBuyer>Ordernummer afnemer</OrderNumberBuyer>
+        <OrderNumberSupplier>Ordernummer leverancier</OrderNumberSupplier>
+        <DespatchAdviceNumber>Verzendberichtnummer</DespatchAdviceNumber>
+        <PackingSlipNumber>Pakbonnummer</PackingSlipNumber>
+        <ReclamationNumber>Reclamatienummer</ReclamationNumber>
+        <PaymentReference>Betalingsreferentie</PaymentReference>
+        <BuyerGLN>8713165000014</BuyerGLN>
+        <Buyer>Elka Pieterman B.V.</Buyer>
+        <BuyerAddress>Prinsenhil 1</BuyerAddress>
+        <BuyerZipcode>4825 AX</BuyerZipcode>
+        <BuyerCity>Breda</BuyerCity>
+        <BuyerCountry>NL</BuyerCountry>
+        <SupplierGLN>8713165000014</SupplierGLN>
+        <SupplierVATNumber>BTW-nummer leverancier</SupplierVATNumber>
+        <DeliveryPartyGLN>8713165000014</DeliveryPartyGLN>
+        <DeliveryParty>Elka Pieterman B.V.</DeliveryParty>
+        <DeliveryPartyAddress>Prinsenhil 1</DeliveryPartyAddress>
+        <DeliveryPartyZipcode>4825 AX</DeliveryPartyZipcode>
+        <DeliveryPartyCity>Breda</DeliveryPartyCity>
+        <DeliveryPartyCountry>NL</DeliveryPartyCountry>
+        <InvoiceeGLN>8713165000014</InvoiceeGLN>
+        <CurrencyCode>EUR</CurrencyCode>
+        <PaymentDiscountDays>Betalingskorting aantal dagen</PaymentDiscountDays>
+        <PaymentDiscountPercentage>Betalingskorting percentage</PaymentDiscountPercentage>
+        <Supplier>Elka Pieterman B.V.</Supplier>
+        <InvoiceDiscount>
+            <DiscountCode>Kortingscode</DiscountCode>
+            <DiscountAmount>Kortingsbedrag</DiscountAmount>
+            <VATPercentage>BTW-percentage</VATPercentage>
+            <IsDutyFree>N</IsDutyFree>
+        </InvoiceDiscount>
+        <InvoiceCharge>
+            <ChargeCode>Toeslagcode</ChargeCode>
+            <ChargeAmount>Toeslagbedrag</ChargeAmount>
+            <VATPercentage>BTW-percentage</VATPercentage>
+            <IsDutyFree>N</IsDutyFree>
+        </InvoiceCharge>
+        <Article>
+            <LineNumber>Regelnummer</LineNumber>
+            <GTIN>GTIN</GTIN>
+            <ArticleCodeSupplier>Artikelcode leverancier</ArticleCodeSupplier>
+            <ArticleDescription>Artikelomschrijving</ArticleDescription>
+            <DeliveredQuantity>Geleverd aantal</DeliveredQuantity>
+            <InvoicedQuantity>Gefactureerd aantal</InvoicedQuantity>
+            <NetLineAmount>Netto regelbedrag</NetLineAmount>
+            <ArticleNetPrice>Netto prijs artikel</ArticleNetPrice>
+            <ArticleGrossPrice>Brutoprijs artikel</ArticleGrossPrice>
+            <ArticleQuantityPerPriceUnit>Aantal per prijseenheid</ArticleQuantityPerPriceUnit>
+            <ArticleNetPriceUnitCode>TY</ArticleNetPriceUnitCode>
+            <PackingSlipNumber>Pakbonnummer</PackingSlipNumber>
+            <OrderNumberBuyer>Ordernummer afnemer</OrderNumberBuyer>
+            <DespatchAdviceNumber>Verzendberichtnummer</DespatchAdviceNumber>
+            <VATPercentage>BTW-percentage</VATPercentage>
+            <IsDutyFree>N</IsDutyFree>
+            <ArticleDiscount>
+                <DiscountCode>Kortingscode</DiscountCode>
+                <DiscountAmount>Kortingsbedrag</DiscountAmount>
+                <VATPercentage>BTW-percentage</VATPercentage>
+                <IsDutyFree>N</IsDutyFree>
+            </ArticleDiscount>
+            <ArticleCharge>
+                <ChargeCode>Toeslagcode</ChargeCode>
+                <ChargeAmount>Toeslagbedrag</ChargeAmount>
+                <VATPercentage>BTW-percentage</VATPercentage>
+                <IsDutyFree>N</IsDutyFree>
+            </ArticleCharge>
+        </Article>
+        <InvoiceTotals>
+            <InvoiceAmount>Factuurbedrag</InvoiceAmount>
+            <NetLineAmount>Netto regelbedrag</NetLineAmount>
+            <VATAmount>BTW-bedrag</VATAmount>
+        </InvoiceTotals>
+        <InvoiceVATTotals>
+            <VATPercentage>BTW-percentage</VATPercentage>
+            <VATBaseAmount>BTW-grondslagbedrag</VATBaseAmount>
+            <VATAmount>BTW-bedrag</VATAmount>
+            <IsDutyFree>N</IsDutyFree>
+        </InvoiceVATTotals>
+    </Message>
+</Messages>
+        </template>
+
+</odoo>
