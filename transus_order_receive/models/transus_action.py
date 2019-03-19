@@ -56,12 +56,12 @@ class TransusAction(models.Model):
         }
 
         new_sale_order = self.env['sale.order'].create(vals)
+        new_sale_order.onchange_partner_id()
 
         for line in msg.ARTICLE:
             product = self._transus_sale_order_get_line_product(line)
             vals = {
                 'product_uom_qty': line.OrderedQuantity,
-                'qty_delivered': line.OrderedQuantity,
                 'product_id': product.id,
                 'order_id': new_sale_order.id,
             }

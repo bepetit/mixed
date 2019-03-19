@@ -13,7 +13,7 @@
                 <RequestedDeliveryDate><t t-esc="self.get_transus_delivery_date()" /></RequestedDeliveryDate><!-- # TODO to commitment_date ?-->
                 <BuyerGLN><t t-esc="self.company_id.transus_gln" /></BuyerGLN>
                 <SupplierGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></SupplierGLN>
-                <DeliveryPartyGLN><t t-esc="self.partner_id.transus_gln or self.partner_id.parent_id.transus_gln" /></DeliveryPartyGLN>
+                <DeliveryPartyGLN><t t-esc="self.picking_type_id.warehouse_id.company_id.partner_id.transus_gln" /></DeliveryPartyGLN>
                 <CurrencyCode><t t-esc="self.currency_id.name" /></CurrencyCode>
 
                 <t t-foreach="self.order_line" t-as="line">
