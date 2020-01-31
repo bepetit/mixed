@@ -172,8 +172,9 @@ class TransusAction(models.Model):
         return True
 
     def _transus_sale_order_get_line_product(self, line):
+        barcode = line.GTIN.text
         product = self.env['product.product'].search([
-            ('barcode', '=', line.GTIN)
+            ('barcode', '=', barcode)
         ])
         return product
 
@@ -184,7 +185,7 @@ class TransusAction(models.Model):
             return False
         product = self._transus_sale_order_get_line_product(line)
         if not product:
-            self.error_message = 'No Product with GTIN=%s found.' % line.GTIN
+            self.error_message = 'No Product with GTIN=%s found.' % line.GTIN.text
             self.error_on_parsing = True
             return False
         if len(product) > 1:
