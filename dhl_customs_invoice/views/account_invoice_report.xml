@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Paperformat for Delivery Customer Invoice Report -->
+        <record id="paperformat_dhl_invoice_report" model="report.paperformat">
+            <field name="name">DHL A4 Customer Invoice</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <!-- QWeb Reports -->
+        <report
+            id="account_invoice_dhl_report"
+            model="stock.picking"
+            string="Custom Invoice"
+            report_type="qweb-pdf"
+            name="dhl_customs_invoice.report_customer_invoice_dhl"
+            file="dhl_customs_invoice.report_customer_invoice_dhl"
+            paperformat="dhl_customs_invoice.paperformat_dhl_invoice_report"
+        />
+    </data>
+</odoo>

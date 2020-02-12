@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_stock_picking_form_inherit" model="ir.ui.view">
+        <field name="name">view stock picking form inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <!-- Button to print Customs Invoice -->
+            <!--<xpath expr="//button[@name='button_scrap']" position="after">-->
+            <!--<button name="button_print_custom_invoice" type="object" string="Print Customer Invoice" attrs="{'invisible': ['|',('state','!=','done'),('carrier_delivery_type', '!=', 'dhl')]}"></button>-->
+            <!--</xpath>-->
+
+            <!-- Tracker Code Details -->
+            <xpath expr="//notebook/page[@name='extra']/group[2]/group[2]" position="after">
+
+                <group>
+                    <field name="tracker_code_ids" nolabel="1"
+                           attrs="{'invisible': [('carrier_delivery_type', '!=', 'dhl')]}">
+                        <tree string="Tracker Code Details" editable="bottom">
+                            <field name="tracker_code" readonly="1"/>
+                            <field name="extra_details"/>
+                        </tree>
+                    </field>
+                </group>
+
+
+            </xpath>
+            <group name="carrier_data" position="inside">
+                <label for="reason_export" string="Reson of Export"/>
+                <div>
+
+                    <field name="reason_export"/>
+                </div>
+            </group>
+            <xpath expr="//notebook/page[@name='extra']/group[2]/group[2]" position="after">
+
+                <field name="export_doc_text" string ="Export Document Text" placeholder="Export Document Text"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

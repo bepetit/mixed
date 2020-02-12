@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<t t-name="dhl_customs_invoice.report_customer_invoice_dhl">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="dhl_customs_invoice.report_dhl_invoice_external_layout">
+                        <t t-foreach="datas" t-as="data">
+                            <div class="page">
+                                <div class="row">
+                                    <div name="invoice_address" class="col-xs-4">
+                                        <strong>Invoice Address :</strong>
+                                        <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                                        <span t-if="o.partner_id.vat">TIN:
+                                            <span t-field="o.partner_id.vat"/>
+                                        </span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <strong>Delivery Address:</strong>
+                                        <t t-if="o.partner_id.child_ids.filtered(lambda record: record.type == 'delivery')">
+                                            <t t-set="partner_shipping" t-value="o.partner_id.child_ids.filtered(lambda record: record.type == 'delivery')[0]"/>
+                                            <address t-esc="partner_shipping" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                                            <span t-if="o.partner_id.vat">TIN:
+                                                <span t-field="o.partner_id.vat"/>
+                                            </span>
+                                        </t>
+                                        <t t-if="not o.partner_id.child_ids.filtered(lambda record: record.type == 'delivery')">
+                                            <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                                            <span t-if="o.partner_id.vat">TIN:
+                                                <span t-field="o.partner_id.vat"/>
+                                            </span>
+
+                                        </t>
+                                    </div>
+                                    <div class="col-xs-4" style="text-align:center; padding-top:10px;">
+                                        <strong>
+                                            <h3>Invoice</h3>
+                                        </strong>
+                                        <strong>
+                                            <h3>
+                                                <span t-esc="data['invoice']"/>
+                                            </h3>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="row mt32" style="width: 100%; display: table; text-align:left;">
+                                    <div style="display: table-row">
+                                        <div style="display: table-cell;"><strong>Reference:</strong></div>
+                                        <div style="display: table-cell;"><strong>Order:</strong></div>
+                                        <div style="display: table-cell;"><strong>Customer Code:</strong></div>
+                                        <div style="display: table-cell;"><strong>Invoice Date:</strong></div>
+                                        <div style="display: table-cell;"><strong>Due Date:</strong></div>
+                                        <div style="display: table-cell;"><strong>Incoterms:</strong></div>
+                                    </div>
+                                    <div style="display: table-row" class="text-left">
+                                        <div style="display: table-cell;">
+                                            <span t-esc="data['reference']"/>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            <span t-esc="data['name']"/>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            <span t-esc="data['customer_code']"/>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            <span t-esc="data['invoice_date']"/>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            <span t-esc="data['due_date']"/>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            <span t-esc="data['incoterms']"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt32" style="width: 100%; display: table;">
+                                    <div class="mb8" style="display: table-row; height:20px; text-align:left;">
+                                        <div style="width: 110px; display: table-cell;border-right: 1px solid grey; border-bottom: 2px solid black;">
+                                            Product number
+                                        </div>
+                                        <div style="width: 370px;display: table-cell;border-right: 1px solid grey;border-bottom: 2px solid black;; padding-left: 3px">
+                                            Product Name
+                                        </div>
+                                        <div style="width: 40px;display: table-cell;border-right: 1px solid grey;border-bottom: 2px solid black;;padding-left: 3px">
+                                            Qty
+                                        </div>
+                                        <div style="width: 110px;display: table-cell;border-right: 1px solid grey;border-bottom: 2px solid black;;padding-left: 3px">
+                                            Barcode
+                                        </div>
+                                        <div style="width: 110px;display: table-cell;border-right: 1px solid grey;border-bottom: 2px solid black;;padding-left: 3px">
+                                            HS Code
+                                        </div>
+                                        <div style="width: 110px; display: table-cell;border-right: 1px solid grey;border-bottom: 2px solid black;;padding-left: 3px">
+                                            Country of origin
+                                        </div>
+                                        <div style="width: 100px; display: table-cell;border-right: 1px solid grey;border-bottom: 2px solid black; padding-left: 3px">
+                                            Weight gm. Pc.
+                                        </div>
+                                        <div style="width: 75px;display: table-cell;border-right: 1px solid grey;border-bottom: 2px solid black;text-align:right; border-top 1px solid grey;padding-right: 3px">
+                                            Price Unit
+                                        </div>
+                                        <div style="width: 75px;display: table-cell;border-bottom: 2px solid black;text-align:right;border-top 1px solid grey;">
+                                            Price Total
+                                        </div>
+                                    </div>
+                                    <t t-set="amount_untaxed" t-value="0"/>
+                                    <t t-set="amount_tax" t-value="0"/>
+                                    <t t-foreach="data['lines']" t-as="line">
+                                        <div style="display: table-row; height:15px; font-size:13px" class="text-left">
+
+                                            <div style="width: 110px;display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
+                                                <span t-esc="line['product_id']"/>
+                                            </div>
+                                            <div style="width: 370px;display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
+                                                <span t-esc="line['product_name']"/>
+                                            </div>
+                                            <div style="width: 40px; display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
+                                                <span t-esc="line['qty']"/>
+                                            </div>
+                                            <div style="width: 110px; display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
+                                                <span t-esc="line['barcode']"/>
+                                            </div>
+                                            <div style="width: 110px;display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
+                                                <span t-esc="line['hs_code']"/>
+                                            </div>
+                                            <div style="width: 110px; display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
+                                                <span t-esc="line['country_of_origin']"/>
+                                            </div>
+                                            <div style="width: 100px;display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
+                                                <span t-esc="line['weight_pr_pc']" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 3}"/>
+                                            </div>
+                                            <div style="width: 75px;display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey; margin-top:3px;text-align:right; padding-right:5px;">
+                                                <span t-esc="line['price_unit']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                            </div>
+                                            <div style="width: 75px;display: table-cell; border-top: 1px solid grey;margin-top:5px;text-align:right;">
+                                                <span t-esc="line['amount_total']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                            </div>
+
+                                        </div>
+                                        <t t-set="amount_untaxed" t-value="amount_untaxed+line['amount_total']"/>
+                                        <t t-set="amount_tax" t-value="amount_tax+line['tax']"/>
+                                    </t>
+                                </div>
+                                <div class="row mt16">
+                                    <div class="col-xs-4 pull-right">
+                                        <table class="table table-condensed">
+                                            <tr class="border-black">
+                                                <td>
+                                                    <strong>Subtotal</strong>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Taxes</strong>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-black">
+                                                <td>
+                                                    <strong>Total</strong>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row mt32" style="margin-left:15px;">
+                                    <strong style="width:200px">Number of colli :</strong>
+                                    <span t-esc="data['no_of_colli']"/>
+                                </div>
+
+                                <t t-set="count" t-value="1"/>
+                                <t t-foreach="data['dimensions']" t-as="dimension">
+                                    <div class="row" style="margin-left:15px;">
+                                       <strong style="padding-right:25px"> Dimension Colli : </strong>
+                                        <span t-esc="count"/>
+                                        :
+                                        <span t-esc="dimension"/>
+                                        <t t-set="count" t-value="count+1"/>
+                                    </div>
+                                </t>
+
+                                <div class="row" style="margin-left:15px;">
+                              
+								<strong style="min-width:230px">  Total Net Weight : </strong>
+                                    <span t-esc="data['gross_weight']"/>
+
+                                    kg
+                                </div>
+                                <div class="row" style="width: 300px; margin-left:15px;">
+                                <strong style="min-width:230px">    Total Gross Weight : </strong>
+                                    <span t-esc="data['net_weight']"/>
+                                    kg
+                                </div>
+                                <div class="row" style="margin-left:15px;">
+
+                                </div>
+                                <div class="row mt24" style="margin-left:15px;">
+                                <strong style="min-width:230px">    Reason of Export : </strong>
+                                    <span t-esc="data['reason_export']"/>
+
+                                </div>
+
+                                <div class="row mt32" style="margin-left:15px;">
+                                    <span t-esc="data['export_doc_text']"/>
+
+                                </div>
+                        				<div class="row mt24" style="margin-left:15px;">
+                                    <strong>We hereby certify that the information contained in this invoice is true and correct and that the contents of this shipment are as started above. The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of EU preferential origin.</strong>						
+									</div>
+                        				<div class="row mt32" style="margin-left:15px;">
+                                    <strong>MIXED.Industries: Signed: ____________________________________ Signed By: __________________________________ Date Signed: __ / __ / ____		</strong>						
+									</div>
+
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </t>
+    
