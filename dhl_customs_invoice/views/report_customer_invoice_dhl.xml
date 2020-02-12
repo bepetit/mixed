@@ -1,5 +1,147 @@
-<?xml version="1.0"?>
-<t t-name="dhl_customs_invoice.report_customer_invoice_dhl">
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <template id="report_dhl_invoice_external_layout_header">
+            <div class="header">
+                <div class="row">
+                    <div class="col-sm-12 pull-right" style="margin-right:13%;">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_dhl_invoice_external_layout_footer">
+            <div class="footer">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <div t-if="not company.custom_footer" class="list-inline">
+                        <!--<li>-->
+                        <span>[</span>
+                        <strong>Page:</strong>
+                        <span class="page"/>:
+                        <span class="topage"/>
+                        <span>]</span>
+                        <!--</li>-->
+
+                        <t t-set="company" t-value="company.sudo()"/>
+                        <strong>
+                            <span t-field="company.name"/>
+                        </strong>
+                        |
+                        <t t-if="company.street"><span t-field="company.street"/>,
+                        </t>
+                        <t t-if="company.city"><span t-field="company.city"/>,
+                        </t>
+                        <t t-if="company.state_id.name"><span t-field="company.state_id.name"/>,
+                        </t>
+                        <t t-if="company.country_id.name">
+                            <span t-field="company.country_id.name"/>
+                        </t>
+                        |
+                        <strong>CC :</strong>
+                        <span>18050364</span>
+                        |
+                        <t t-if="company.vat"><strong>VAT :</strong>
+                            <span t-field="company.vat"/>
+                        </t>
+                        <strong>BIC :</strong>
+                        <span>ABNANL2A</span>
+                        <br/>
+                        <t t-if="company.income_currency_exchange_account_id.name">
+                            <strong>Bank :</strong>
+                            <span t-field="company.income_currency_exchange_account_id.name"/>
+                            |
+                        </t>
+                        <t t-if="company.phone">
+                            <strong>Phone:</strong>
+                            <span t-field="company.phone"/>
+                            |
+                        </t>
+
+                        <t t-if="company.email">
+                            <strong>Email :</strong>
+                            <span t-field="company.email"/>
+                            |
+                        </t>
+                        <t t-if="company.website">
+                            <strong>Website :</strong>
+                            <span t-field="company.website"/>
+							|
+                        </t>
+                          <strong>EORI:</strong>
+                        <span>NL806491188</span>
+
+                        <!--<li t-if="company">-->
+                        <!--<strong>-->
+                        <!--<span t-field="company.name"/>-->
+                        <!--</strong>-->
+                        <!--</li>-->
+
+                        <!--<li t-if="company.street">-->
+                        <!--<span t-esc="company.street"/>,-->
+                        <!--</li>-->
+                        <!--<li t-if="company.city">-->
+                        <!--<span t-esc="company.city"/>,-->
+                        <!--</li>-->
+                        <!--<li t-if="company.state_id.name">-->
+                        <!--<span t-esc="company.state_id.name"/>,-->
+                        <!--</li>-->
+                        <!--<li t-if="company.country_id.name">-->
+                        <!--<span t-esc="company.country_id.name"/>,-->
+                        <!--</li>-->
+
+                        <!--<li t-if="company.phone">Phone:-->
+                        <!--<span t-field="company.phone"/>-->
+                        <!--</li>-->
+
+                        <!--<li t-if="company.fax and company.phone">&amp;bull;</li>-->
+                        <!--<li t-if="company.fax">Fax:-->
+                        <!--<span t-field="company.fax"/>-->
+                        <!--</li>-->
+
+                        <!--<li t-if="company.email and company.fax or company.email and company.phone">&amp;bull;</li>-->
+                        <!--<li t-if="company.email">Email:-->
+                        <!--<span t-field="company.email"/>-->
+                        <!--</li>-->
+
+                        <!--<li t-if="company.website and company.email or company.website and company.fax or company.website and company.phone">-->
+                        <!--&amp;bull;-->
+                        <!--</li>-->
+                        <!--<li t-if="company.website">Website:-->
+                        <!--<span t-field="company.website"/>-->
+                        <!--</li>-->
+                    </div>
+					<t t-if="company.custom_footer">
+                        <span t-raw="company.rml_footer"/>
+                    </t>
+
+                </div>
+            </div>
+        </template>
+
+
+        <template id="report_dhl_invoice_external_layout">
+            <!--<style>-->
+            <!--body, header, footer {font-family:Arial,Helvetica,sans-serif !important;};-->
+            <!--</style>-->
+            <!-- Multicompany -->
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <t t-call="dhl_customs_invoice.report_dhl_invoice_external_layout_header"/>
+            <t t-raw="0"/>
+            <t t-call="dhl_customs_invoice.report_dhl_invoice_external_layout_footer"/>
+        </template>
+
+        <template id="report_customer_invoice_dhl">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="dhl_customs_invoice.report_dhl_invoice_external_layout">
@@ -8,7 +150,7 @@
                                 <div class="row">
                                     <div name="invoice_address" class="col-xs-4">
                                         <strong>Invoice Address :</strong>
-                                        <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                                        <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
                                         <span t-if="o.partner_id.vat">TIN:
                                             <span t-field="o.partner_id.vat"/>
                                         </span>
@@ -16,14 +158,14 @@
                                     <div class="col-xs-4">
                                         <strong>Delivery Address:</strong>
                                         <t t-if="o.partner_id.child_ids.filtered(lambda record: record.type == 'delivery')">
-                                            <t t-set="partner_shipping" t-value="o.partner_id.child_ids.filtered(lambda record: record.type == 'delivery')[0]"/>
-                                            <address t-esc="partner_shipping" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                                            <t t-set="partner_shipping" t-value="o.partner_id.child_ids.filtered(lambda record: record.type == 'delivery')[0]"></t>
+                                            <address t-esc="partner_shipping" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
                                             <span t-if="o.partner_id.vat">TIN:
                                                 <span t-field="o.partner_id.vat"/>
                                             </span>
                                         </t>
                                         <t t-if="not o.partner_id.child_ids.filtered(lambda record: record.type == 'delivery')">
-                                            <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                                            <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
                                             <span t-if="o.partner_id.vat">TIN:
                                                 <span t-field="o.partner_id.vat"/>
                                             </span>
@@ -125,13 +267,13 @@
                                                 <span t-esc="line['country_of_origin']"/>
                                             </div>
                                             <div style="width: 100px;display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey;padding-left: 3px">
-                                                <span t-esc="line['weight_pr_pc']" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 3}"/>
+                                                <span t-esc="line['weight_pr_pc']" t-options='{"widget": "float", "precision": 3}'/>
                                             </div>
                                             <div style="width: 75px;display: table-cell; border-right: 1px solid grey; border-top: 1px solid grey; margin-top:3px;text-align:right; padding-right:5px;">
-                                                <span t-esc="line['price_unit']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                <span t-esc="line['price_unit']" t-options='{"widget": "monetary", "display_currency": data["currency_id"]}'/>
                                             </div>
                                             <div style="width: 75px;display: table-cell; border-top: 1px solid grey;margin-top:5px;text-align:right;">
-                                                <span t-esc="line['amount_total']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                <span t-esc="line['amount_total']" t-options='{"widget": "monetary", "display_currency": data["currency_id"]}'/>
                                             </div>
 
                                         </div>
@@ -147,7 +289,7 @@
                                                     <strong>Subtotal</strong>
                                                 </td>
                                                 <td class="text-right">
-                                                    <span t-esc="amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                    <span t-esc="amount_untaxed" t-options='{"widget": "monetary", "display_currency": data["currency_id"]}'/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -155,7 +297,7 @@
                                                     <strong>Taxes</strong>
                                                 </td>
                                                 <td class="text-right">
-                                                    <span t-esc="amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                    <span t-esc="amount_tax" t-options='{"widget": "monetary", "display_currency": data["currency_id"]}'/>
                                                 </td>
                                             </tr>
                                             <tr class="border-black">
@@ -163,7 +305,7 @@
                                                     <strong>Total</strong>
                                                 </td>
                                                 <td class="text-right">
-                                                    <span t-esc="amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: data[&quot;currency_id&quot;]}"/>
+                                                    <span t-esc="amount_untaxed" t-options='{"widget": "monetary", "display_currency": data["currency_id"]}'/>
                                                 </td>
                                             </tr>
                                         </table>
@@ -210,11 +352,8 @@
                                     <span t-esc="data['export_doc_text']"/>
 
                                 </div>
-                        				<div class="row mt24" style="margin-left:15px;">
-                                    <strong>We hereby certify that the information contained in this invoice is true and correct and that the contents of this shipment are as started above. The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of EU preferential origin.</strong>						
-									</div>
-                        				<div class="row mt32" style="margin-left:15px;">
-                                    <strong>MIXED.Industries: Signed: ____________________________________ Signed By: __________________________________ Date Signed: __ / __ / ____		</strong>						
+									<div class="row mt32" style="margin-left:15px;">
+                                    <strong>Vitility International B.V: Signed: ____________________________________ Signed By: __________________________________ Date Signed: __ / __ / ____		</strong>						
 									</div>
 
                             </div>
@@ -222,5 +361,6 @@
                     </t>
                 </t>
             </t>
-        </t>
-    
+        </template>
+    </data>
+</odoo>
