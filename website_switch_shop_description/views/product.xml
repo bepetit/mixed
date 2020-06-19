@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_product_detail_form_view" model="ir.ui.view">
+        <field name="name">product.detail.form.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='notes']" position="after">
+                <page string="Product detail">
+                    <group string="Product beschrijving, weergave rechts van foto">
+                        <field name="website_description_text" nolabel="1"/>
+                        <group string="Pluspunt, onder product beschrijving en onder foto">
+                            <field name="x_product_detail_free_label_1"/>
+                            <field name="x_product_detail_free_label_2"/>
+                            <field name="x_product_detail_free_label_3"/>
+                            <field name="x_product_detail_free_label_4"/>
+							<field name="x_product_detail_free_label_5"/>
+							<field name="x_product_detail_free_label_6"/>
+                        </group>
+                        <group string="Pluspunt waarde, indien gevuld weergave in tabel">
+                            <field name="x_product_detail_free_field_1"/>
+                            <field name="x_product_detail_free_field_2"/>
+                            <field name="x_product_detail_free_field_3"/>
+                            <field name="x_product_detail_free_field_4"/>
+							<field name="x_product_detail_free_field_5"/>
+							<field name="x_product_detail_free_field_6"/>
+                        </group>
+                    </group>
+                        <group string="Pluspunt lange beschrijving. Eigenschap beschrijving is kop tekst">
+                            <field name="x_product_detail_free_long_text_1"/>
+                            <field name="x_product_detail_free_long_text_2"/>
+                            <field name="x_product_detail_free_long_text_3"/>
+                            <field name="x_product_detail_free_long_text_4"/>
+							<field name="x_product_detail_free_long_text_5"/>
+							<field name="x_product_detail_free_long_text_6"/>
+                        </group>
+                        <group>
+                        <group string="Product afmetingen">
+                            <group>
+                                <field name="x_product_detail_length"/>
+                                <field name="x_product_detail_width"/>
+                                <field name="x_product_detail_height"/>
+                                <field name="x_product_detail_lxbxh"/>
+                                <field name="x_product_detail_diameter"/>
+                                <field name="x_product_detail_height_adjust"/>
+								<field name="x_product_detail_height_adjust_max"/>
+                                <field name="x_product_detail_width_adjust"/>
+								<field name="x_product_detail_width_adjust_max"/>
+                                <field name="x_product_detail_diameter_inner"/>
+                                <field name="x_product_detail_uom_meter"/>
+                            </group>
+                            <group>
+                                <field name="x_product_detail_length_uk"/>
+                                <field name="x_product_detail_width_uk"/>
+                                <field name="x_product_detail_height_uk"/>
+                                <field name="x_product_detail_lxbxh_uk"/>
+                                <field name="x_product_detail_diameter_uk"/>
+                                <field name="x_product_detail_height_adjust_uk"/>
+								<field name="x_product_detail_height_adjust_max_uk"/>
+                                <field name="x_product_detail_width_adjust_uk"/>
+								<field name="x_product_detail_width_adjust_max_uk"/>
+                                <field name="x_product_detail_diameter_inner_uk"/>
+                                <field name="x_product_detail_uom_meter_uk"/>
+                            </group>
+                        </group>
+                        <group string="Product gewicht en inhoud">
+                            <group>
+                                <field name="x_product_detail_weight"/>
+                                <field name="x_product_detail_uom_weight"/>
+                                <field name="x_product_detail_max_weight"/>
+                                <field name="x_product_detail_uom_weight_2"/>
+                                <field name="x_product_detail_amount"/>
+								<field name="x_product_detail_amount"/>
+                                <field name="x_product_detail_uom_liter"/>
+                                <field name="x_product_detail_surface"/>
+								<field name="x_product_detail_surface_2"/>
+                                <field name="x_product_detail_uom_m2"/>
+                            </group>
+                            <group>
+                                <field name="x_product_detail_weight_uk"/>
+                                <field name="x_product_detail_uom_weight_uk"/>
+                                <field name="x_product_detail_max_weight_uk"/>
+                                <field name="x_product_detail_uom_weight_uk_2"/>
+                                <field name="x_product_detail_amount_uk"/>
+								<field name="x_product_detail_amount_uk"/>
+                                <field name="x_product_detail_uom_liter_uk"/>
+                                <field name="x_product_detail_surface_uk"/>
+								<field name="x_product_detail_surface_2_uk"/>
+                                <field name="x_product_detail_uom_m2_uk"/>
+                            </group>
+                            </group>
+                        </group>
+                    <group>
+                        <group string="Product bestendig">
+                            <field name="x_product_detail_dishwasher"/>
+                            <field name="x_product_detail_freezer"/>
+                            <field name="x_product_detail_microwave"/>
+                            <field name="x_product_detail_oven"/>
+                            <field name="x_product_detail_washer"/>
+                            <field name="x_product_detail_food_safe"/>
+                            <field name="x_product_detail_warning"/>
+                        </group>
+                    </group>
+                    <group string="Niet op website zichtbaar">
+                        <group string="Product details">
+                            <field name="x_product_detail_usage" widget="many2many_tags" options="{'no_create': True}"/>
+							<field name="x_product_detail_private" options="{'no_create': True}"/>
+                            <field name="x_product_detail_opening"/>
+                            <field name="x_product_detail_elastic"/>
+                            <field name="x_product_detail_point"/>
+                            <field name="x_product_detail_function"/>
+                            <field name="x_product_detail_angle"/>
+                            <field name="x_product_detail_enlarge"/>
+                            <field name="x_product_detail_one_size"/>
+                            <field name="x_product_detail_assemble"/>
+                        </group>
+                        <group string="Certificaat">
+                            <field name="x_product_detail_certificate" widget="url"/>
+                            <field name="x_product_detail_link_CE" widget="url"/>
+                            <field name="x_product_detail_link_grune_punkt" widget="url"/>
+                            <field name="x_product_detail_link_pap20" widget="url"/>
+                            <field name="x_product_detail_link_pap21" widget="url"/>
+                        </group>
+                        
+                    </group>
+                </page>
+                <page string="Product verpakking">
+                    <group>
+                        <group string="Verpakking">
+                            <field name="x_product_detail_package_inhoudps"/>
+                            <field name="x_product_detail_package_length"/>
+                            <field name="x_product_detail_package_width"/>
+                            <field name="x_product_detail_package_height"/>
+                        </group>
+                        <group string="Gewicht">
+                            <field name="x_product_detail_package_netto_weight"/>
+                            <field name="x_product_detail_package_gross_weight"/>
+                            <field name="x_product_detail_package_type"/>
+                            <field name="x_product_detail_package_stansmes"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Product marketing">
+                    <group>
+                        <group string="Marketing Beeldmateriaal">
+                            <field name="x_product_detail_marketing_image_p" widget="url"/>
+                            <field name="x_product_detail_marketing_image_3d" widget="url"/>
+                            <field name="x_product_detail_marketing_image_1" widget="url"/>
+                            <field name="x_product_detail_marketing_image_2" widget="url"/>
+                            <field name="x_product_detail_marketing_image_3" widget="url"/>
+                            <field name="x_product_detail_marketing_image_4" widget="url"/>
+                            <field name="x_product_detail_marketing_image_5" widget="url"/>
+                            <field name="x_product_detail_marketing_image_6" widget="url"/>
+                        </group>
+                        <group string="Extrene links">
+                            <field name="x_product_detail_marketing_qr_link_internal" widget="url"/>
+                            <field name="x_product_detail_marketing_qr_link" widget="url"/>
+                            <field name="x_product_detail_marketing_ean_link" widget="url"/>
+                        </group>
+                        <group>
+                            <field name="x_product_detail_marketing_extra"/>
+							<field name="x_product_detail_marketing_video_status"/>
+                        </group>
+                    </group>
+                </page>        
+            </xpath>
+        </field>
+    </record>
+</odoo>

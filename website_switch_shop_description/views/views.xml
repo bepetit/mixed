@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_product_usage" model="ir.ui.view">
+        <field name="name">Product gebruik</field>
+        <field name="model">product.group.usage</field>
+        <field name="arch" type="xml">
+            <tree string="Product soort">
+                <field name="sequence"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action act window -->
+    <record model="ir.actions.act_window" id="product_group_usage_action">
+        <field name="name">Product soort</field>
+        <field name="res_model">product.group.usage</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu in website admin configurations -->
+    <menuitem id ="menu_product_group_usage" name="Product soort" parent="sales_team.menu_sale_config" action="product_group_usage_action"/>
+</odoo>
